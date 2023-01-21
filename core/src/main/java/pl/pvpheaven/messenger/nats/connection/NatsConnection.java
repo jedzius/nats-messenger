@@ -5,7 +5,7 @@ import pl.pvpheaven.messenger.nats.handler.NatsHandler;
 import java.time.Duration;
 
 /**
- * @param <V> Value type
+ * @param <V> Value type.
  */
 public interface NatsConnection<V> {
 
@@ -20,6 +20,13 @@ public interface NatsConnection<V> {
      * @param natsHandler Message handler that will do actions on message received.
      */
     void subscribe(String channel, NatsHandler<V> natsHandler);
+
+    /**
+     * @param channel Channel that we will be listening for messages on.
+     * @param natsHandler Message handler that will do actions on message received.
+     * @param type Message class (NOTE: for more demanding users, use #subscribe(String, NatsHandler<V>) if you don't know what you are doing.).
+     */
+    void subscribe(String channel, NatsHandler<V> natsHandler, Class<? extends V> type);
 
     /**
      * @param timeout Guarantees our server has processed the message.

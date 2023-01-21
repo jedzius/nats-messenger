@@ -5,7 +5,7 @@
     <parent>
         <artifactId>nats-messenger</artifactId>
         <groupId>pl.pvpheaven.pvpheaven-nats-messenger</groupId>
-        <version>2.0.1</version>
+        <version>2.1.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -23,13 +23,13 @@
         <dependency>
             <groupId>pl.pvpheaven.pvpheaven-nats-messenger</groupId>
             <artifactId>messenger</artifactId>
-            <version>2.0.1</version>
+            <version>2.1.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>pl.pvpheaven.pvpheaven-nats-messenger</groupId>
             <artifactId>codec-pack</artifactId>
-            <version>2.0.1</version>
+            <version>2.1.1</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

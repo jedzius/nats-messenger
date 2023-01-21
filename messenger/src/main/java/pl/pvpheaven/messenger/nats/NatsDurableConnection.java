@@ -33,6 +33,14 @@ final class NatsDurableConnection<V> implements NatsConnection<V> {
     }
 
     @Override
+    public void subscribe(String channel, NatsHandler<V> natsHandler, Class<? extends V> type) {
+        this.natsConnection.createDispatcher(message -> {
+            final V decodedMessage = this.natsCodec.decodeValue(message.getData());
+            if (decodedMessage.getClass().isAssignableFrom(type)) natsHandler.onMessageReceive(decodedMessage);
+        }).subscribe(channel);
+    }
+
+    @Override
     public void flush(Duration timeout) {
         try {
             this.natsConnection.flush(timeout);
