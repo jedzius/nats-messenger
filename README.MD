@@ -1,14 +1,13 @@
 # 🌠 NATS Messenger (Work In Progress)
-Library made for needs of our server and published *for sake of humanity*.
 
-It extends `pub/sub` from `NATS.io` with lettuce-like (redis library) codecs and *abstraction* capabilities.
+Extends `pub/sub` from `NATS.io` with lettuce-like (redis library) codecs and *abstraction* capabilities.
 
 ---
 ## 🌠 NATS Messenger :: Usage
 
 > Creating new client and connection:
 ```java
-final Options options = new Options.Builder()
+final Options options = Options.builder()
         .server("nats://demo.nats.io:4222")
         .build();
 final NatsClient natsClient = NatsMessenger.create(options);
