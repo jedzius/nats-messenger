@@ -20,6 +20,8 @@ natsConnection.subscribe("test-channel", new NatsTestListener());
 /* Or */
 natsConnection.subscribe("test-channel", value -> System.out.println(value));
 natsConnection.publish("test-channel", "Test message!");
+natsConection.publish("test-channel", "Test message with callback!", packet 
+        -> System.out.println(packet));
 
 natsConnection.flush(Duration.ZERO);
 ```

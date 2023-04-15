@@ -27,7 +27,7 @@ public final class NatsMessengerTest {
     private void pubSubTest() {
         final String uniqueTopic = UUID.randomUUID().toString();
 
-        this.natsConnection.publish(uniqueTopic, "testowa wiadomosc", o -> System.out.println(o));
+        this.natsConnection.publish(uniqueTopic, "testowa wiadomosc", System.out::println);
 
         this.natsConnection.flush(Duration.ZERO);
     }
