@@ -1,5 +1,6 @@
 package pl.pvpheaven.messenger.nats.connection;
 
+import pl.pvpheaven.messenger.nats.callback.Callback;
 import pl.pvpheaven.messenger.nats.handler.NatsHandler;
 
 import java.time.Duration;
@@ -14,6 +15,14 @@ public interface NatsConnection<V> {
      * @param value Message that will be published on channel.
      */
     void publish(String channel, V value);
+
+    /**
+     * @param channel Channel that the message will be published on.
+     * @param value Message that will be published on channel.
+     * @param callback Packet callback that will executed on finish.
+     */
+    void publish(String channel, V value, Callback callback);
+
 
     /**
      * @param channel Channel that we will be listening for messages on.

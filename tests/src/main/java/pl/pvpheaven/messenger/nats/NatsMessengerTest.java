@@ -1,6 +1,7 @@
 package pl.pvpheaven.messenger.nats;
 
 import io.nats.client.Options;
+import pl.pvpheaven.messenger.nats.callback.Callback;
 import pl.pvpheaven.messenger.nats.codec.NatsStringCodec;
 import pl.pvpheaven.messenger.nats.connection.NatsConnection;
 
@@ -25,10 +26,8 @@ public final class NatsMessengerTest {
 
     private void pubSubTest() {
         final String uniqueTopic = UUID.randomUUID().toString();
-        final String message = "Hello world!";
 
-        this.natsConnection.subscribe(uniqueTopic, System.out::println);
-        this.natsConnection.publish(uniqueTopic, message);
+        this.natsConnection.publish(uniqueTopic, "testowa wiadomosc", o -> System.out.println(o));
 
         this.natsConnection.flush(Duration.ZERO);
     }

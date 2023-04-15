@@ -1,6 +1,7 @@
 package pl.pvpheaven.messenger.nats;
 
 import io.nats.client.Connection;
+import pl.pvpheaven.messenger.nats.callback.Callback;
 import pl.pvpheaven.messenger.nats.codec.NatsCodec;
 import pl.pvpheaven.messenger.nats.connection.NatsConnection;
 import pl.pvpheaven.messenger.nats.handler.NatsHandler;
@@ -24,6 +25,12 @@ final class NatsDurableConnection<V> implements NatsConnection<V> {
     @Override
     public void publish(String channel, V value) {
         this.natsConnection.publish(channel, this.natsCodec.encodeValue(value));
+    }
+
+    @Override
+    public void publish(String channel, V value, Callback callback) {
+        this.natsConnection.publish(channel, this.natsCodec.encodeValue(value));
+        callback.done(value);
     }
 
     @Override
