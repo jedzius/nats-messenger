@@ -28,7 +28,7 @@ final class NatsDurableConnection<V> implements NatsConnection<V> {
     }
 
     @Override
-    public void publish(String channel, V value, Callback callback) {
+    public void publish(String channel, V value, Callback<V> callback) {
         this.natsConnection.publish(channel, this.natsCodec.encodeValue(value));
         callback.done(value);
     }

@@ -21,7 +21,7 @@ public interface NatsConnection<V> {
      * @param value Message that will be published on channel.
      * @param callback Packet callback that will executed on finish.
      */
-    void publish(String channel, V value, Callback callback);
+    void publish(String channel, V value, Callback<V> callback);
 
 
     /**
